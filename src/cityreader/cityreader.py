@@ -24,14 +24,11 @@ class City():
     def __str__(self):
       return f"{self.name}, {self.lat},{self.lon}"
   
-
-
 filename = "cities.csv"
 
 cities = []
 
 fields = [] 
-rows = [] 
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
@@ -41,13 +38,9 @@ def cityreader(cities=[]):
     csvreader = csv.reader(csvfile) 
     fields = next(csvreader) 
     for row in csvreader: 
-        rows.append(row) 
-  for row in rows:
-    cities.append(City(row[fields.index("city")], float(row[fields.index("lat")]), float(row[fields.index("lng")])))
+      cities.append(City(str(row[fields.index("city")]), float(row[fields.index("lat")]), float(row[fields.index("lng")])))
 
   return cities
-
-cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
@@ -93,3 +86,7 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # the specified coordinates.
 
   return within
+
+
+
+
